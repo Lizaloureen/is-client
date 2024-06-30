@@ -7,7 +7,7 @@ export const getUser = () => {
   if (userData !== null) {
     return userData;
   } else {
-    window.location.href = "/logins";
+    window.location.href = "/login";
   }
 };
 
@@ -20,6 +20,6 @@ export const getToken = () => {
   if (token !== null) {
     return token;
   } else {
-    window.location.href = "/logins";
+    window.location.href = "/login";
   }
 };

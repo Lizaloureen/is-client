@@ -93,7 +93,7 @@ const Application = () => {
           <tbody>
             {applicationData?.map((application, index) => (
               <tr key={index+1}>
-                <td>{index + 1}</td>
+                <td>{application.client.first_Name} {application.client.last_Name}</td>
                 <td>{application.reason}</td>
                 <td>{application.type_of_firearm}</td>
                 <td>{application.next_of_kin_name}</td>

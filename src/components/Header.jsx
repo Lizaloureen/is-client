@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { getUser } from "../utils/helpers";
+import { useState } from "react";
 
 const Header = () => {
+  const [showSubMenu, setShowSubMenu] = useState(false); 
   const user = getUser();
   const navigate = useNavigate();
 
@@ -15,7 +17,7 @@ const Header = () => {
     <div className="navbar">
       <div className="nav-container container">
         <Link to="/landing" className="logo" style={{ color: "white" }}>
-          Logo
+          Fire Licencing
         </Link>
         <ul className="nav-list">
           <li className="nav-item">
@@ -33,6 +35,13 @@ const Header = () => {
               Firearms
             </Link>{" "}
           </li>
+          <li className="nav-item">
+            <span className="nav-link" onClick={() => setShowSubMenu(!showSubMenu)}>
+              My Account
+            </span>
+          </li>
+          {showSubMenu && 
+          <div className="submenu">
           {user ? (
             <>
               <li className="nav-item">
@@ -47,12 +56,15 @@ const Header = () => {
               </li>
             </>
           ) : (
-            <li className="nav-item">
+            <li className="nav-item ">
               <Link to="/login" className="nav-link">
                 Login
               </Link>{" "}
             </li>
           )}
+
+          </div>
+}
         </ul>
       </div>
     </div>
