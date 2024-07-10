@@ -25,7 +25,7 @@ const Profile = () => {
 
   return (
     <div className="w-container">
-      <h1>My Profile Page</h1>
+      <h1 style={{ color: "white" }}>My Profile Page</h1>
       <div className="mid-container m-l p-l">
         My Data: <br /> <br />
         <p>

@@ -10,6 +10,7 @@ import RegistrationPage from "./pages/Registration";
 import AddApplication from "./pages/AddApplication";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Profile from "./pages/Profile";
+import Licence from "./pages/Licence";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/applications" element={<Application />} />
           <Route path="/applications/add" element={<AddApplication />} />
           <Route path="/firearms" element={<Firearms />} />
+          <Route path="/licences" element={<Licence />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Route>

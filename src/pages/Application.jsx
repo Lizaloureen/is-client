@@ -23,16 +23,19 @@ const Application = () => {
   const getApplicationStats = async () => {
     const token = getToken();
 
-    const res = await axios.get("http://127.0.0.1:8000/client/applications/stats", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
-      },
-    });
+    const res = await axios.get(
+      "http://127.0.0.1:8000/client/applications/stats",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        },
+      }
+    );
     const data = res.data;
     setStats(data.data);
   };
-  
+
   useEffect(() => {
     getApplications();
     getApplicationStats();
@@ -41,10 +44,10 @@ const Application = () => {
   const handleButtonClick = () => {
     history.push("/new-page");
   };
-  
+
   return (
     <div>
-      <h3>Applications</h3>
+      <h3 style={{ color: "white" }}>Applications</h3>
       <div className="grider">
         <div className="card">
           <div className="card-body">
@@ -74,13 +77,13 @@ const Application = () => {
       <br />
 
       <div className="flex-apart" style={{ marginBottom: "10px" }}>
-        <h3>My Applications</h3>
+        <h3 style={{ color: "white" }}>My Applications</h3>
         <Link to="/applications/add">Add Application</Link>
       </div>
       <div className="table-container">
         <table>
           <thead>
-            <tr>              
+            <tr>
               <th>Applicant Name</th>
               <th>Reason</th>
               <th>Firearm Type</th>
@@ -92,17 +95,22 @@ const Application = () => {
           </thead>
           <tbody>
             {applicationData?.map((application, index) => (
-              <tr key={index+1}>
-                <td>{application.client.first_Name} {application.client.last_Name}</td>
+              <tr key={index + 1}>
+                <td>
+                  {application.client.first_Name} {application.client.last_Name}
+                </td>
                 <td>{application.reason}</td>
                 <td>{application.type_of_firearm}</td>
                 <td>{application.next_of_kin_name}</td>
                 <td>{new Date(application.create_at).toLocaleString()}</td>
-                <td>{application.interview_date ? (new Date(application.interview_date).toLocaleString())  : '--'}</td>
+                <td>
+                  {application.interview_date
+                    ? new Date(application.interview_date).toLocaleString()
+                    : "--"}
+                </td>
                 <td>{application.status}</td>
               </tr>
-            )
-              )}
+            ))}
           </tbody>
         </table>
       </div>

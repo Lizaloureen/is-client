@@ -3,7 +3,7 @@ import { getUser } from "../utils/helpers";
 import { useState } from "react";
 
 const Header = () => {
-  const [showSubMenu, setShowSubMenu] = useState(false); 
+  const [showSubMenu, setShowSubMenu] = useState(false);
   const user = getUser();
   const navigate = useNavigate();
 
@@ -31,40 +31,47 @@ const Header = () => {
             </Link>{" "}
           </li>
           <li className="nav-item">
+            <Link to="/licences" className="nav-link">
+              Licences
+            </Link>{" "}
+          </li>
+          <li className="nav-item">
             <Link to="/firearms" className="nav-link">
               Firearms
             </Link>{" "}
           </li>
           <li className="nav-item">
-            <span className="nav-link" onClick={() => setShowSubMenu(!showSubMenu)}>
+            <span
+              className="nav-link"
+              onClick={() => setShowSubMenu(!showSubMenu)}
+            >
               My Account
             </span>
           </li>
-          {showSubMenu && 
-          <div className="submenu">
-          {user ? (
-            <>
-              <li className="nav-item">
-                <span className="nav-link" onClick={logUseOut}>
-                  Logout
-                </span>{" "}
-              </li>
-              <li className="nav-item">
-                <Link to="/profile" className="nav-link">
-                  {user.email}
-                </Link>{" "}
-              </li>
-            </>
-          ) : (
-            <li className="nav-item ">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>{" "}
-            </li>
+          {showSubMenu && (
+            <div className="submenu">
+              {user ? (
+                <>
+                  <li className="nav-item">
+                    <Link to="/profile" className="nav-link">
+                      {user.email}
+                    </Link>{" "}
+                  </li>
+                  <li className="nav-item">
+                    <span className="nav-link" onClick={logUseOut}>
+                      Logout
+                    </span>{" "}
+                  </li>
+                </>
+              ) : (
+                <li className="nav-item ">
+                  <Link to="/login" className="nav-link">
+                    Login
+                  </Link>{" "}
+                </li>
+              )}
+            </div>
           )}
-
-          </div>
-}
         </ul>
       </div>
     </div>
